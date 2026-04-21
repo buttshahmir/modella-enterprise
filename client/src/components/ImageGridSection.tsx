@@ -51,13 +51,13 @@ export default function ImageGridSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-white mb-4">
+          {/* <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-white mb-4">
             OUR MANUFACTURING EXCELLENCE
           </h2>
           <p className="text-lg text-gray-400 font-poppins max-w-2xl mx-auto">
             State-of-the-art facilities and precision engineering for superior steel products
           </p>
-        </motion.div>
+        </motion.div> */}
 
         {/* Image Grid */}
         <motion.div
