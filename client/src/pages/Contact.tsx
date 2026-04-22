@@ -318,7 +318,7 @@ export default function Contact() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
-                    Message sent successfully! We will get back to you soon.
+                    Message sent successfully! We will get back to you very soon.
                   </motion.div>
                 )}
 

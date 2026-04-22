@@ -44,13 +44,13 @@ export default function ImageGridSection() {
     <section className="py-20 md:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
-        <motion.div
+        {/* <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+          transition={{ duration: 0.6 }} */}
+        {/* > */}
           {/* <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-white mb-4">
             OUR MANUFACTURING EXCELLENCE
           </h2>

@@ -3,16 +3,6 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { X, Menu } from 'lucide-react';
 
-/**
- * Navbar Component - Glassmorphism Design
- *
- * - Transparent glass background with blur effect
- * - Gold accent on hover for menu items
- * - Scroll-triggered background darkening
- * - Fixed positioning for persistent navigation
- * - Fully functional mobile hamburger menu with animated slide-down drawer
- */
-
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -63,16 +53,19 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
+
             {/* Logo */}
             <motion.div
-              className="flex-shrink-0"
+              className="flex-shrink-0 cursor-pointer flex items-center"
               whileHover={{ scale: 1.05 }}
               onClick={() => navigate('/')}
             >
-              <h1 className="text-2xl font-montserrat font-bold text-white cursor-pointer">
-                MODELLA
-                <span className="text-accent ml-2">ENTERPRISE</span>
-              </h1>
+              <img
+                src="/logo.png"
+                alt="Modella Enterprise"
+                className="h-10 w-auto object-contain"
+                loading="eager"
+              />
             </motion.div>
 
             {/* Desktop Menu Items */}
@@ -83,18 +76,16 @@ export default function Navbar() {
                   onClick={() => navigate(item.href)}
                   className="text-white font-poppins font-medium text-sm relative group"
                   whileHover={{ color: '#f2c94c' }}
-                  transition={{ duration: 0.2 }}
                 >
                   {item.label}
                   <motion.div
                     className="absolute bottom-0 left-0 h-0.5 bg-accent"
                     initial={{ width: 0 }}
                     whileHover={{ width: '100%' }}
-                    transition={{ duration: 0.3 }}
                   />
                 </motion.button>
               ))}
-            </div>
+            </div> {/* ✅ FIX: yeh missing tha */}
 
             {/* Mobile Toggle Button */}
             <div className="md:hidden">
@@ -103,11 +94,11 @@ export default function Navbar() {
                 onClick={() => setMobileOpen((prev) => !prev)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               >
                 {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </motion.button>
             </div>
+
           </div>
         </div>
 
@@ -115,37 +106,32 @@ export default function Navbar() {
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
-              key="mobile-menu"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden bg-black/80 backdrop-blur-lg border-t border-white/10"
+              className="md:hidden bg-black/80 backdrop-blur-lg border-t border-white/10"
             >
-              <div className="flex flex-col px-6 py-4 space-y-1">
-                {navItems.map((item, index) => (
-                  <motion.button
+              <div className="flex flex-col px-6 py-4">
+                {navItems.map((item) => (
+                  <button
                     key={item.label}
                     onClick={() => navigate(item.href)}
-                    className="text-left text-white font-poppins font-medium text-base py-3 border-b border-white/10 last:border-b-0 hover:text-accent transition-colors duration-200"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                    className="text-left text-white py-3 border-b border-white/10 last:border-b-0"
                   >
                     {item.label}
-                  </motion.button>
+                  </button>
                 ))}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+
       </motion.nav>
 
-      {/* Backdrop to close menu on outside click */}
+      {/* Backdrop */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            key="backdrop"
             className="fixed inset-0 z-40 md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
