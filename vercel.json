@@ -1,6 +1,6 @@
 {
   "outputDirectory": "dist/public",
-  "buildCommand": "npm install --prefix client && npm run vercel-build --prefix client",
+  "buildCommand": "cd client && npm install && npm run vercel-build",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
